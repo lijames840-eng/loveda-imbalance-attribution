@@ -30,6 +30,15 @@
 
 ---
 
+## 技术报告
+
+完整的方法、实验与讨论见仓库内的技术报告：
+
+- **[在线阅读版](docs/report.md)** —— Markdown，含 14 张图与 18 张表，GitHub 直接渲染
+- **[Word 版](docs/loveda-attribution-report.docx)** —— 同一内容，含 LaTeX 公式排版
+
+下面只摘录结论；论证过程、失败实验的记录、以及每条结论的失效边界都在报告里。
+
 ## 主要结果
 
 全部数值来自 1024×1024 全图滑窗（窗口 512、步长 256、概率平均），官方 Val 集 1669 幅。
@@ -109,6 +118,9 @@
 │   ├── dataset_statistics.py    类别频率、目标尺度、类间邻接
 │   ├── make_figure_*.py         论文插图
 │   └── collect_results.py  ablation_table.py  bench_all.py    汇总 / 消融表 / 效率基准
+├── docs/
+│   ├── report.md                技术报告（在线阅读版）
+│   └── loveda-attribution-report.docx   同一报告的 Word 版
 ├── data/
 │   ├── splits.json              固定划分：train 2269 / dev 253（seed 42）
 │   ├── stats/                   统计缓存（类别频率、几何、邻接、逐图份额）
