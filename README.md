@@ -117,7 +117,8 @@
 │   ├── step0_*.py               乡村农田流向专项核查（形态 + 光谱）
 │   ├── dataset_statistics.py    类别频率、目标尺度、类间邻接
 │   ├── make_figure_*.py         论文插图
-│   └── collect_results.py  ablation_table.py  bench_all.py    汇总 / 消融表 / 效率基准
+│   ├── collect_results.py  ablation_table.py  bench_all.py    汇总 / 消融表 / 效率基准
+│   └── requirements.txt        依赖清单
 ├── docs/
 │   ├── report.md                技术报告（在线阅读版）
 │   └── loveda-attribution-report.docx   同一报告的 Word 版
@@ -130,7 +131,6 @@
 ├── results/
 │   ├── figures/                 16 张插图
 │   └── tables/                  results_summary、消融、效率、参数量扫描
-├── code/requirements.txt
 ├── LICENSE
 ├── .gitignore
 └── README.md
@@ -288,6 +288,9 @@ dev 与训练集同源：99.6% 的 dev 影像在训练集中存在空间邻居�
 
 代码 MIT（见 `LICENSE`）。数据集 LoveDA 为 CC BY-NC-SA 4.0，不随本仓库分发，
 商用前请自行确认许可条款。
+
+`results/figures/` 中 fig3_samples 与 fig12_predictions 含 LoveDA 影像片段，
+仅用于学术展示，同样遵循 CC BY-NC-SA 4.0。
 
 ## 致谢
 
