@@ -1,0 +1,32 @@
+# E11: DeepLabV3+ + ResNet-50 (39.64 M params / 163.57 GFLOPs @512²)
+#
+# Heaviest baseline. Batch geometry is IDENTICAL to V1 (batch 8, no accumulation),
+# so BN statistics come from the same 8 samples per step.
+#
+# This replaced an earlier batch-2 / accum-4 setting whose comment claimed "only
+# batch 2 fits on a 6 GB GPU". That claim was wrong -- measured peak at 512² with
+# AMP: batch 2 = 1.77 GB, 4 = 2.67 GB, 6 = 3.80 GB, 8 = 5.23 GB (15 consecutive
+# steps, no OOM). Keeping batch 2 would have degraded BN statistics for no reason,
+# i.e. handicapped the baseline by an artefact of a wrong assumption.
+#
+# Headroom at batch 8 is 0.9 GB. If a long run does hit OOM, fall back to
+# batch 4 / accum 2 (effective 8, BN over 4 samples) and say so in the paper.
+paths:
+  data: "data/raw/LoveDA"
+  experiments: "experiments"
+
+data:
+  crop: 512
+  workers: 4
+  scale_range: [0.75, 1.5]
+
+train:
+  epochs: 30
+  batch_size: 8
+  accum_steps: 1      # same geometry as V1/V2/V5
+  lr: 0.0006
+  weight_decay: 0.01
+  seed: 42
+  dice_weight: 0.0
+  class_weights: null
+

@@ -1,0 +1,26 @@
+# E10: UNet + ResNet-34 (24.57 M params / 36.69 GFLOPs @512²)
+#
+# Fairness note: this baseline uses an ImageNet-pretrained encoder (industry
+# convention) while V1-V4 are trained from scratch. The asymmetry is stated in the
+# paper; do not compare absolute numbers without it.
+#
+# Everything except batch geometry is identical to configs/e0_ce.yaml so that
+# V1 - E10 isolates the *architecture*, not the recipe.
+paths:
+  data: "data/raw/LoveDA"
+  experiments: "experiments"
+
+data:
+  crop: 512
+  workers: 6          # 24.6 M model + 8 workers does not fit comfortably in 16 GB RAM
+  scale_range: [0.75, 1.5]
+
+train:
+  epochs: 30
+  batch_size: 4
+  accum_steps: 2      # effective batch 8, same as V1
+  lr: 0.0006
+  weight_decay: 0.01
+  seed: 42
+  dice_weight: 0.0
+  class_weights: null

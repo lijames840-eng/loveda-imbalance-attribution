@@ -1,0 +1,32 @@
+# E12: SegFormer-B0 (MiT encoder, 3.45 M params / 2.72 GFLOPs @512²)
+#
+# IMPORTANT: this is a local MiT-B0 re-implementation and loads **no official
+# ImageNet weights** -- unlike E10/E11. So it is a from-scratch model, same starting
+# condition as V1/V5. Say this explicitly in the paper; do not list it with the
+# "pretrained baselines".
+#
+# The closest competitor in size to V1 (3.48 M), and the only *fair* architecture
+# comparison (both scratch, same budget): same parameters, different inductive bias
+# (transformer vs. depthwise CNN + FPN).
+#
+# Note the FLOPs gap -- V1 needs 6.71 GFLOPs for the same parameters because its
+# decoder works on stride-4 features while SegFormer's is a light MLP fusion.
+# Parameter count alone is not a measure of lightness; both columns get reported.
+paths:
+  data: "data/raw/LoveDA"
+  experiments: "experiments"
+
+data:
+  crop: 512
+  workers: 8
+  scale_range: [0.75, 1.5]
+
+train:
+  epochs: 30
+  batch_size: 8
+  accum_steps: 1
+  lr: 0.0006
+  weight_decay: 0.01
+  seed: 42
+  dice_weight: 0.0
+  class_weights: null

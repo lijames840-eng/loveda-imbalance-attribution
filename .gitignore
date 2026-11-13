@@ -1,0 +1,30 @@
+# ---------------- dataset: download separately, never commit ----------------
+data/raw/
+data/*.zip
+# curl 清单，由 fetch_tree.py 运行时生成，随机器而变
+data/tree.cfg
+
+# ---------------- run artifacts: large binaries ----------------
+experiments/**/*.pth
+experiments/**/*.npz
+experiments/**/analysis/
+*.npy
+
+# ---------------- logs ----------------
+logs/
+*.log
+
+# ---------------- python ----------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---------------- editors / OS ----------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

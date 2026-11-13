@@ -1,0 +1,31 @@
+# ab1_perimage：V2 三件套的单因素消融 —— 只加逐图自适应加权（含份额对齐）
+#
+# 唯一目的是回答"V2 的 +3.00 是哪一项挣来的"。除被点名的那一项外，其余设置与
+# configs/v2.yaml **逐字节等价**（同一 seed、同一 crop、同一 lr 调度、30 epoch、
+# batch 8），所以 AB_x − V1 就是这一项的净贡献，V2 − AB_x 是其余两项的合计。
+#
+# 与 V1（朴素 CE）配对使用，不与 V2 单独比：三者都是"在 V1 上只加一项"。
+paths:
+  data: "data/raw/LoveDA"
+  experiments: "experiments"
+
+data:
+  crop: 512
+  workers: 8
+  scale_range: [0.75, 1.5]
+
+train:
+  epochs: 30
+  batch_size: 8
+  accum_steps: 1
+  lr: 0.0006
+  weight_decay: 0.01
+  seed: 42
+  class_weights: null
+  loss:
+    dice_weight: 0.0
+    per_image: true
+    weight_clip: [0.5, 4.0]
+    # 与 V2 相同：份额对齐系数必须在，否则逐图权重会重演"背景 ×1.38、裸地 ×0.60"
+    share_scale: "data/stats/per_image_share_scale.json"
+    boundary_weight: 0.0

@@ -1,0 +1,19 @@
+data:
+  crop: 512
+  scale_range:
+  - 0.75
+  - 1.5
+  workers: 6
+model: unet_r34
+paths:
+  data: data/raw/LoveDA
+  experiments: experiments
+train:
+  accum_steps: 2
+  batch_size: 4
+  class_weights: null
+  dice_weight: 0.0
+  epochs: 30
+  lr: 0.0006
+  seed: 42
+  weight_decay: 0.01

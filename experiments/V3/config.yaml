@@ -1,0 +1,28 @@
+data:
+  crop: 512
+  scale_range:
+  - 0.75
+  - 1.5
+  workers: 8
+model: v3
+paths:
+  data: data/raw/LoveDA
+  experiments: experiments
+train:
+  accum_steps: 1
+  batch_size: 8
+  class_weights: null
+  epochs: 30
+  loss:
+    boundary_weight: 1.0
+    dice_weight: 0.5
+    per_image: true
+    share_scale: data/stats/per_image_share_scale.json
+    weight_clip:
+    - 0.5
+    - 4.0
+  lr: 0.0006
+  prior_weight: 0.1
+  seed: 42
+  select_corrected_tau: 1.0
+  weight_decay: 0.01

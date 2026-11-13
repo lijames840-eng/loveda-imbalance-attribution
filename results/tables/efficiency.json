@@ -1,0 +1,86 @@
+[
+ {
+  "model": "V1/V2",
+  "key": "v1",
+  "params_M": 3.484216,
+  "flops_G": 6.71,
+  "ms_b1": 6.15,
+  "fps_b1": 162.6,
+  "imgs_per_s_b4": 188.4,
+  "all_ms": [
+   6.04,
+   6.17,
+   6.15
+  ]
+ },
+ {
+  "model": "V3",
+  "key": "v3",
+  "params_M": 3.542591,
+  "flops_G": 6.71,
+  "ms_b1": 6.73,
+  "fps_b1": 148.6,
+  "imgs_per_s_b4": 190.2,
+  "all_ms": [
+   6.73,
+   6.5,
+   6.81
+  ]
+ },
+ {
+  "model": "V5",
+  "key": "v5",
+  "params_M": 3.447368,
+  "flops_G": 6.73,
+  "ms_b1": 6.47,
+  "fps_b1": 154.6,
+  "imgs_per_s_b4": 187.6,
+  "all_ms": [
+   6.32,
+   7.09,
+   6.47
+  ]
+ },
+ {
+  "model": "E10 UNet-R34",
+  "key": "unet_r34",
+  "params_M": 24.568392,
+  "flops_G": 36.69,
+  "ms_b1": 12.61,
+  "fps_b1": 79.3,
+  "imgs_per_s_b4": 96.2,
+  "all_ms": [
+   12.61,
+   12.49,
+   12.74
+  ]
+ },
+ {
+  "model": "E11 DeepLabV3+",
+  "key": "deeplabv3p_r50",
+  "params_M": 39.635528,
+  "flops_G": 163.57,
+  "ms_b1": 31.9,
+  "fps_b1": 31.4,
+  "imgs_per_s_b4": 34.7,
+  "all_ms": [
+   31.73,
+   31.92,
+   31.9
+  ]
+ },
+ {
+  "model": "E12 SegFormer-B0",
+  "key": "segformer_b0",
+  "params_M": 3.454056,
+  "flops_G": 2.72,
+  "ms_b1": 8.49,
+  "fps_b1": 117.8,
+  "imgs_per_s_b4": 143.9,
+  "all_ms": [
+   8.49,
+   9.05,
+   8.27
+  ]
+ }
+]

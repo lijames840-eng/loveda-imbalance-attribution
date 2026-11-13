@@ -1,0 +1,34 @@
+paths:
+  data: "data/raw/LoveDA"
+  experiments: "experiments"
+
+data:
+  crop: 512
+  workers: 8
+  scale_range: [0.75, 1.5]
+
+train:
+  epochs: 30
+  batch_size: 8
+  accum_steps: 1
+  lr: 0.0006
+  weight_decay: 0.01
+  seed: 42
+  class_weights: null
+  # weight of the PAH auxiliary loss (composition cross-entropy). The predicted
+  # composition is ~1.9 nats at uniform, while the main loss sits near 1.0-1.5, so
+  # 0.1 keeps the auxiliary term from dominating.
+  prior_weight: 0.1
+  # Checkpoint selection on the CORRECTED dev predictions (tau = 1, pre-registered).
+  # Keeps "what we select on" == "what we report"; tau comes from the plan and pi
+  # from the model, so this is not a fitted hyper-parameter. Set to 0 to select on
+  # the uncorrected head (= the V3-d configuration).
+  select_corrected_tau: 1.0
+  loss:
+    # V3 = V2's loss + PAH. Keep this block identical to configs/v2.yaml so that
+    # V3 - V2 isolates the prior head alone.
+    dice_weight: 0.5
+    per_image: true
+    weight_clip: [0.5, 4.0]
+    share_scale: "data/stats/per_image_share_scale.json"
+    boundary_weight: 1.0

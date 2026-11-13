@@ -1,0 +1,72 @@
+{
+ "total": 3484216,
+ "groups": [
+  {
+   "name": "stem (stem)",
+   "params": 11584,
+   "pct": 0.33
+  },
+  {
+   "name": "stage1 /2 (s1)",
+   "params": 71360,
+   "pct": 2.05
+  },
+  {
+   "name": "stage2 /4 (s2)",
+   "params": 411008,
+   "pct": 11.8
+  },
+  {
+   "name": "stage3 /8 (s3)",
+   "params": 698944,
+   "pct": 20.06
+  },
+  {
+   "name": "stage4 /16 (s4)",
+   "params": 1734400,
+   "pct": 49.78
+  },
+  {
+   "name": "context (gc)",
+   "params": 100912,
+   "pct": 2.9
+  },
+  {
+   "name": "decoder (lat/fuse/proj)",
+   "params": 418496,
+   "pct": 12.01
+  },
+  {
+   "name": "head (head)",
+   "params": 37512,
+   "pct": 1.08
+  }
+ ],
+ "feat": {
+  "stem": [
+   64,
+   256,
+   256
+  ],
+  "s1": [
+   128,
+   128,
+   128
+  ],
+  "s2": [
+   256,
+   64,
+   64
+  ],
+  "s3": [
+   320,
+   32,
+   32
+  ],
+  "s4": [
+   448,
+   16,
+   16
+  ]
+ }
+}

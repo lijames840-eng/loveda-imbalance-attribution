@@ -1,0 +1,10 @@
+{
+ "n_tiles": 4191,
+ "boundary_frac_mean": 0.11888255267460686,
+ "tiles_by_split": {
+  "Train/Rural": 1366,
+  "Train/Urban": 1156,
+  "Val/Rural": 992,
+  "Val/Urban": 677
+ }
+}
